@@ -43,12 +43,14 @@ Procederemos a instalar Ansible en MV1.
 En las máquinas OPENsuse hemos activado previamente a la hora de instalar la máquina virtual,
 
 ![1](./img/1.1.4.png)
+
 *MV1*
 
 ![1](./img/1.1.5.png)
+
 *MV2*
 
-pero a Windows es más delicado, de base no es posible conectarse por SSH por ello tenemos que hacer lo siguiente:
+Pero a Windows es más delicado, de base no es posible conectarse por SSH por ello tenemos que hacer lo siguiente:
 
 Primero, será instalar la característica, "Servidor OpenSSH".
 
