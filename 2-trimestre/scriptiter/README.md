@@ -1,6 +1,6 @@
 <center>
 
-# estructura iterativa
+# Estructura iterativa
 
 </center>
 
