@@ -1,6 +1,6 @@
 <center>
 
-# VPN en Windows server
+# estructura iterativa
 
 </center>
 
