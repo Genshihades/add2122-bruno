@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+date = `date`
+msg1 = "bot14controller no hace nada" + "#{date}"
+msg2 = "bot controller activa servicio" + "#{date}"
+if system("systemctl is-active bot14") == true
+        puts "[INFO] => El servicio bot ya estaba activo"
+        system("sudo echo '#{msg1}' >> /etc/bot14/bot.log")
+        puts "guardando log"
+else
+        puts "[INFO] El servicio está inactivo, activando el bot"
+        system('systemctl start bot14')
+        system("sudo echo '#{msg2}' >> /etc/bot14/bot.log")
+        puts "guardando log"
+end
+
+exit

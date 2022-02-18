@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'telegram/bot'
+
+# token:
+# 1. Write your TOKEN value into "token" variable or
+# 2. Create a local file "hiden.token" with your TOKEN value inside
+token = `cat hide.token`.strip
+bot_username = '@leviatanrobot'
+$help = "Opciones que tengo:
+/version ves el nombre de mi creador
+/ip veremos la ip
+/meet y un nombre y te saludo
+/fecha verás la fecha de hoy"
+$ver = "11/02/2022"
+$fecha = `date`
+$ip = `ip a | grep eth0`
+
+puts "[INFO] Running bot #{$0}..."
+
+Telegram::Bot::Client.run(token) do |bot|
+  bot.listen do |message|
+    options = message.text.split(" ")
+    puts " => #{message.text}"
+    if message.text == "/help"
+      bot.api.send_message(chat_id: message.chat.id, text: "#{$help}")
+    elsif message.text == "/fecha"
+      bot.api.send_message(chat_id: message.chat.id, text: "Today is #{$fecha}")
+    elsif message.text == "/ip"
+      bot.api.send_message(chat_id: message.chat.id, text: "#{$ip}")
+    elsif message.text == "/version"
+      bot.api.send_message(chat_id: message.chat.id, text: "El creador es Bruno y se ha hecho el #{$ver}")
+    elsif message.text == "/start"
+      bot.api.send_message(chat_id: message.chat.id, text: "Escribe /help pra veas que puedo hacer")
+    elsif options[0] == "/meet"
+      say = "Holiii, #{options[1]}!"
+      bot.api.send_message(chat_id: message.chat.id,text: say)
+    end
+  end
+end
